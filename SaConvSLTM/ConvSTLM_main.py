@@ -36,9 +36,9 @@ def build_model():
 
 
 def train(model, train_x, train_y):
-    epochs = 80  # In practice, you would need hundreds of epochs.
+    epochs = 80  # In practice, you would need about 80,000 epochs.
 
-    # # 在文件名中包含 epoch (使用 `str.format`)
+    # 训练过程中保存权重
     # checkpoint_path = "training/cp-{epoch:04d}.ckpt"
     # checkpoint_dir = os.path.dirname(checkpoint_path)
     #
@@ -99,10 +99,10 @@ def main():
     print('new')
     path = download()
     data = load_data(path)
-    train_x, train_y, test_x, test_y = split(data, 2950, 3000)  # (, 10, 64, 64)
+    train_x, train_y, test_x, test_y = split(data, 2950, 3000)  # shape(, 10, 64, 64),just for test. should be close to 10000 in practice, such as (9800, 10000)
     model = build_model()
     model = train(model, train_x, train_y)
     predict(model, test_x, test_y)
 
-model = build_model()
-Sa_train_test(model)
+# model = build_model()
+# Sa_train_test(model)
