@@ -22,7 +22,7 @@ from tensorflow.python.keras.layers.convolutional_recurrent import ConvRNN2D
 import tensorflow as tf
 
 class SaConvLSTM2DCell(DropoutRNNCellMixin, Layer):
-    """Cell class for the SaConvLSTM2D layer. Modified from `tensorflow.python.keras.layers.convolutional_recurrent`
+    """Cell class for the SaConvLSTM2D layer. Modified from `tensorflow.python.keras.layers.convolutional_recurrent.ConvLSTM2DCell`
 
     Arguments:
       filters: Integer, the dimensionality of the output space
@@ -223,8 +223,8 @@ class SaConvLSTM2DCell(DropoutRNNCellMixin, Layer):
         self.built = True
 
     def call(self, inputs, states, training=None):
-        h_tm1 = states[0]  # previous memory state
-        c_tm1 = states[1]  # previous carry state
+        h_tm1 = states[0] 
+        c_tm1 = states[1] 
 
         # dropout matrices for input units
         dp_mask = self.get_dropout_mask_for_cell(inputs, training, count=4)
