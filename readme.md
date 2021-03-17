@@ -24,7 +24,7 @@
 
   **模型结构**
 
-![image-20210317230847173](/Users/zhangyouyi/Library/Mobile Documents/com~apple~CloudDocs/Typora/RelyFiles/image-20210317230847173.png)
+![SaConvLSTM_model_structure](/https://github.com/youyi-zhang-o/SaConvSLTM/blob/main/SaConvSLTM/photo/SaConvLSTM_model_structure.png)
 
 ## `SaConvLSTM` structure
 
@@ -32,8 +32,8 @@
 
 * overall pattern
 
-  ![image-20210317231218553](/Users/zhangyouyi/Library/Mobile Documents/com~apple~CloudDocs/Typora/RelyFiles/image-20210317231218553.png)
+  ![image-20210317231218553](/https://github.com/youyi-zhang-o/SaConvSLTM/blob/main/SaConvSLTM/photo/SaConvLSTM_cell.png)
 
 * self_attention memory module
 
-![image-20210317231301247](/Users/zhangyouyi/Library/Mobile Documents/com~apple~CloudDocs/Typora/RelyFiles/image-20210317231301247.png)
+![image-20210317231301247](/https://github.com/youyi-zhang-o/SaConvSLTM/blob/main/SaConvSLTM/photo/self-attention_module.png)
