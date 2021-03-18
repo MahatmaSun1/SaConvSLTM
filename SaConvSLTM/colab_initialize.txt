@@ -1,0 +1,21 @@
+# 用于在colab中进行模型的训练的代码
+
+# for ConvLSTM :
+
+import os
+path = "/content/drive/MyDrive/SaConvSLTM"
+os.chdir(path)
+from ConvLSTM_main import *
+
+main()
+
+
+# for SaConvLSTM :
+
+import os
+path = "/content/drive/MyDrive/SaConvSLTM"
+os.chdir(path)
+from SaConvLSTM_main import *
+
+model = Sa_build_model()
+Sa_train_test(model)
