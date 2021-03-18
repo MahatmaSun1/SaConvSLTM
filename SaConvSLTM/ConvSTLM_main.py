@@ -4,25 +4,26 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from SaConvSLTM_main import *
 def build_model():
+    filters = 10
     model = keras.Sequential(
         [
             keras.Input(
                 shape=(None, 64, 64, 1)
             ),
             layers.ConvLSTM2D(
-                filters=40, kernel_size=(3, 3), padding="same", return_sequences=True
+                filters=filteres, kernel_size=(3, 3), padding="same", return_sequences=True
             ),
             layers.BatchNormalization(),
             layers.ConvLSTM2D(
-                filters=40, kernel_size=(3, 3), padding="same", return_sequences=True
+                filters=filteres, kernel_size=(3, 3), padding="same", return_sequences=True
             ),
             layers.BatchNormalization(),
             layers.ConvLSTM2D(
-                filters=40, kernel_size=(3, 3), padding="same", return_sequences=True
+                filters=filters, kernel_size=(3, 3), padding="same", return_sequences=True
             ),
             layers.BatchNormalization(),
             layers.ConvLSTM2D(
-                filters=40, kernel_size=(3, 3), padding="same", return_sequences=True
+                filters=filters, kernel_size=(3, 3), padding="same", return_sequences=True
             ),
             layers.BatchNormalization(),
             layers.Conv3D(
@@ -31,7 +32,7 @@ def build_model():
         ]
     )
     # model.summary()
-    model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(5))
+    model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(0.05))
     return model
 
 
@@ -77,9 +78,9 @@ def predict(model, test_x, test_y):
     prediction = model.predict(test_x)
     # turn [64, 64, 1] img to [64, 64] img. Otherwise may raise an error when plot
     prediction = np.squeeze(prediction, 4)  # shape = [batch_size, 10, 64, 64]
-    save_as_image(prediction)
+    save_as_image(prediction, 1)
     stantard = np.squeeze(test_y, 4);
-    save_as_image(stantard, 1)
+    save_as_image(stantard, 0)
     # for id in range(prediction.shape[0]):
     #     for t in range(prediction.shape[1]):
     #         plt.imshow(prediction[id, t])
@@ -96,7 +97,7 @@ def restore_from_latest(model):
 
 
 def main():
-    print('new')
+    print('convSLTM training')
     path = download()
     data = load_data(path)
     train_x, train_y, test_x, test_y = split(data, 2950, 3000)  # shape(, 10, 64, 64),just for test. should be close to 10000 in practice, such as (9800, 10000)
