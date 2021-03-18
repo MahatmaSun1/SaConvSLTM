@@ -52,7 +52,7 @@ def save_as_image(matrix, mode=0):
         root = 'result/prediction'
     elif mode == 0:
         root = 'result/standard'
-    else
+    else:
         root = 'result/sa_prediction'
     import shutil
     if os.path.exists(root):
