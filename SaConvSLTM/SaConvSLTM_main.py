@@ -60,7 +60,7 @@ def Sa_train_test(model):
     # turn [64, 64, 1] img to [64, 64] img. Otherwise may raise an error when plot
     prediction = np.squeeze(prediction, 4)  # shape = [batch_size, 10, 64, 64]
     # save result as photoes
-    save_as_image(prediction)
+    save_as_image(prediction, -1)
     # save the standard result, that is, test_y, as photoes
     # stantard = np.squeeze(test_y, 4);
     # save_as_image(stantard, 1)
