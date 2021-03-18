@@ -2,7 +2,6 @@ from load_data import *
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-from SaConvSLTM_main import *
 def build_model():
     filters = 10
     model = keras.Sequential(
