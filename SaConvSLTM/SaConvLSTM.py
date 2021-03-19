@@ -176,7 +176,7 @@ class SaConvLSTM2DCell(DropoutRNNCellMixin, Layer):
                                          constraint=self.kernel_constraint
                                          )
 
-        kernel_z_shape = self.kernel_size + (2, self.filters)  # 卷积操作，系数矩阵是卷积核
+        kernel_z_shape = self.kernel_size + (2, self.filters)  
         self.kernel_z = self.add_weight(shape=kernel_z_shape,
                                         initializer=self.kernel_initializer,
                                         name='kernel_z_shape',
@@ -298,8 +298,8 @@ class SaConvLSTM2DCell(DropoutRNNCellMixin, Layer):
         v_h = self.sa_conv(h_t, kernel_hv)
         k_h = self.sa_conv(h_t, kernel_hk)
         q_h = self.sa_conv(h_t, kernel_hq)
-        k_m = self.sa_conv(h_t, kernel_mk)
-        v_m = self.sa_conv(h_t, kernel_mv)  # h, w, 1
+        k_m = self.sa_conv(m_t_minus_one, kernel_mk)
+        v_m = self.sa_conv(m_t_minus_one, kernel_mv)  # h, w, 1
 
         q_h = K.squeeze(q_h, 3)
         k_m = K.squeeze(k_m, 3)
